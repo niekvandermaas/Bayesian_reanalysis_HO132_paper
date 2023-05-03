@@ -5,4 +5,4 @@ The "Bayesian_analysis_event_free_survival" is the main code for the analysis of
 
 The "Bayesian_analysis_event_free_survival" is the main code for the analysis of the secondary outcomes including CR, MRD, early deaths and adverse events.
 
-The text files "survival_model_cp" and "pred_model_comp" contain the code for the model in jags. 
+The text files "survival_model_cp" and "Bayesian_analysis_binary_outcome" contain the code for the model in jags. 
