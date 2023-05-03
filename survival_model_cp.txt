@@ -35,11 +35,5 @@ model
       p1 <- 1 - step(hr_1 - 0.76)
       p2 <- 1 - step(hr_1 - 0.87)
       p3 <- 1 - step(hr_1 - 1)
-
-      #predictions
-      for (j in 1:N) {
-      time_p[j] ~ dexp(lambda_p[j])
-      lambda_p[j] <- exp(beta_0 + beta_1 * group_2[j])
-      } 
-           
+     
    }
