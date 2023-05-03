@@ -67,15 +67,6 @@ aml_data <- list()
 mcmc_samples <- list()
 results <- list()
 
-N <- list("1" = 800,
-          "2" = 800,
-          "3" = 800,
-          "4" = 800)
-group_2 <- list("1" <- rep(c(TRUE, FALSE), 800),
-                "2" <- rep(c(TRUE, FALSE), 800),
-                "3" <- rep(c(TRUE, FALSE), 800),
-                "4" <- rep(c(TRUE, FALSE), 800))
-
 for(i in 1:length(interim_list)){
   # put the data together for JAGS
   aml_data[[i]] <- list(time = efs[[i]][,1] +0.001,
@@ -104,10 +95,7 @@ params_to_monitor <- c("hr_1", "p1", "p2", "p3")
 model <- jags.model(file = "survival_model_cp.txt", aml_data[[i]], 
                     n.chains = 3, n.adapt= 1000)
 update(model, 1000); # Burning 1000 samples
-mcmc_samples[[i]] <- coda.samples(model, params_to_monitor, n.iter= 50000,
-                                  inits = list(.RNG.name = "base::Wichmann-Hill",
-                                               .RNG.seed = 2022,
-                                               thin = 50))
+mcmc_samples[[i]] <- coda.samples(model, params_to_monitor, n.iter= 50000)
 
 results[[i]] <- mcmc_samples[[i]][[1]]
 }
