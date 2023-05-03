@@ -1,0 +1,45 @@
+model
+    {
+      # historical controls
+      for(i in 1:n1)
+      {
+        is_censored[i] ~ dinterval(time[i], t_cen[i])
+        time[i] ~ dweib(shape, lambda0)
+      }
+
+      for(i in (n1+1):n2)
+      {
+        is_censored[i] ~ dinterval(time[i], t_cen[i])
+        time[i] ~ dweib(shape, lambda[i])
+        lambda[i] <- exp(beta_0 + beta_1 * group[i])
+      }
+      
+      # priors
+      shape ~ dexp(0.1)
+      lambda0 ~ dgamma(0.001,0.001)
+      basehaz <- log(lambda0)
+      #beta_0 ~ dnorm(0,1.0E-6)
+      beta_0 ~ dnorm(basehaz, tau) #commensurate prior
+      beta_1 ~ dnorm(0,1.0E-6)
+	commensurate_prior ~ dnorm(basehaz, tau)
+
+      #Spike and Slab on Baseline Hazard
+      t ~ dbern(p0);
+      slab ~ dunif(l.slab,u.slab);
+      tau <- (1-t)*spike + t*slab;
+
+      #generated values
+      hr_1 <- exp(beta_1) #hazard ratio
+
+      # post prob
+      p1 <- 1 - step(hr_1 - 0.76)
+      p2 <- 1 - step(hr_1 - 0.87)
+      p3 <- 1 - step(hr_1 - 1)
+
+      #predictions
+      for (j in 1:N) {
+      time_p[j] ~ dexp(lambda_p[j])
+      lambda_p[j] <- exp(beta_0 + beta_1 * group_2[j])
+      } 
+           
+   }
