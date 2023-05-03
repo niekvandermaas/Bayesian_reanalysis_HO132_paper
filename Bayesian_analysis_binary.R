@@ -71,8 +71,6 @@ for (l in 1:nrow(data)){
     h = data$h[l],
     a = data$a[l],
     b = data$b[l],
-    N = 450, # for prediction
-    M = 450,# for prediction
     #"Spike and Slab" hyperparameters
     l.slab= 1.0E-4, #S_l (lower bound of slab) 
     u.slab= 2, #S_u (upper bound of slab)
