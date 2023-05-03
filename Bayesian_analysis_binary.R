@@ -6,10 +6,10 @@ library("ggthemes")
 library("scales")
 
 #data
-data_150 <- read.csv("data_150_5.csv", sep="", stringsAsFactors=TRUE)
-data_300 <- read.csv("data_300_5.csv", sep="", stringsAsFactors=TRUE)
-data_450 <- read.csv("data_450_5.csv", sep="", stringsAsFactors=TRUE)
-data_600 <- read.csv("data_600_5.csv", sep="", stringsAsFactors=TRUE)
+data_150 <- read.csv("data_150.csv", sep="", stringsAsFactors=TRUE)
+data_300 <- read.csv("data_300.csv", sep="", stringsAsFactors=TRUE)
+data_450 <- read.csv("data_450.csv", sep="", stringsAsFactors=TRUE)
+data_600 <- read.csv("data_600.csv", sep="", stringsAsFactors=TRUE)
 
 ######################################
 #Bayesian interim analysis
