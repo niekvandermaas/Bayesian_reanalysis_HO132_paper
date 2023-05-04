@@ -21,7 +21,7 @@ model
       #beta_0 ~ dnorm(0,1.0E-6)
       beta_0 ~ dnorm(basehaz, tau) #commensurate prior
       beta_1 ~ dnorm(0,1.0E-6)
-	commensurate_prior ~ dnorm(basehaz, tau)
+      commensurate_prior ~ dnorm(basehaz, tau)
 
       #Spike and Slab on Baseline Hazard
       t ~ dbern(p0);
