@@ -16,7 +16,7 @@ model{
 
   # analysis of current data as joint model
   y[2] ~ dbin(theta2, n)
-  #theta2 ~ dbeta(0.5,0.5) #vague prior for sensitivity analysis
+  #theta2 ~ dbeta(0.5,0.5) #non-informative prior 
   logit(theta2) <-  logit_theta2
   logit_theta2 ~  dnorm(mu, inv_tau2) #commensurate prior
   logit(commensurate_prior) <- mu
