@@ -83,7 +83,7 @@ for (l in 1:nrow(data)){
   # Running the model
   model <- jags.model(file = "Bayesian_analysis_binary_outcome.txt", data_list[[l]], n.chains = 3, n.adapt= 1000)
   update(model, 1000); # Burning 1000 samples
-  mcmc_samples[[l]] <- coda.samples(model, params_to_monitor, n.iter=100000)
+  mcmc_samples[[l]] <- coda.samples(model, params_to_monitor, n.iter=50000)
   
   results[[l]] <- mcmc_samples[[l]][[1]]
 }
