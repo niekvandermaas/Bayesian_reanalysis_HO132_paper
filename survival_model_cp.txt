@@ -18,7 +18,7 @@ model
       shape ~ dexp(0.1)
       lambda0 ~ dgamma(0.001,0.001)
       basehaz <- log(lambda0)
-      #beta_0 ~ dnorm(0,1.0E-6)
+      #beta_0 ~ dnorm(0,1.0E-6) #non-informative prior
       beta_0 ~ dnorm(basehaz, tau) #commensurate prior
       beta_1 ~ dnorm(0,1.0E-6)
       commensurate_prior ~ dnorm(basehaz, tau)
