@@ -9,7 +9,7 @@ library("ggthemes")
 library("coxed")
 
 #simulate data. Ignore covariates. 
-#data in reality is cut off at follow-up at the time of the interim analysis, but not in this example
+#data is cut off at follow-up at the time of the interim analysis
 #specify own hazard fun
 my_hazard <- function(t){ 
   dnorm((log(t) - log(50))/log(40)) /
