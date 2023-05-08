@@ -60,7 +60,7 @@ ggsurvplot(
 #Bayesian interim analysis event free survival
 ##############################################
 # The model specification
-file.show("survival_model_with_commensurate_prior_hobbs.txt")
+file.show("Bayesian_survival_model.txt")
 
 #make a list of all dataframes
 interim_list <- list(data_150 = data_150 %>% arrange(trialnr),
@@ -119,7 +119,7 @@ for(i in 1:length(interim_list)){
 params_to_monitor <- c("beta_0", "beta_1" , "hr_1", "p1", "p2", "p3")
 
 # Running the model
-model <- jags.model(file = "survival_model_with_commensurate_prior_hobbs.txt", aml_data[[i]], 
+model <- jags.model(file = "Bayesian_survival_model.txt", aml_data[[i]], 
                     n.chains = 3, n.adapt= 1000)
 update(model, 1000); # Burning 1000 samples to the MCMC gods...
 mcmc_samples[[i]] <- coda.samples(model, params_to_monitor, n.iter= 50000,
