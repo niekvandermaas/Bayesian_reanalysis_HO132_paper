@@ -8,7 +8,7 @@ library('bayesplot')
 library("ggthemes")
 library("coxed")
 
-#simulate data with 900 obs, duration max 24 months and 10% censoring. Ignore covariates. 
+#simulate data. Ignore covariates. 
 #data in reality is cut off at follow-up at the time of the interim analysis, but not in this example
 #specify own hazard fun
 my_hazard <- function(t){ 
