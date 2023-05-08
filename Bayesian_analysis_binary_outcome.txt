@@ -1,0 +1,28 @@
+model{
+  # historical controls
+  y[1] ~ dbin(theta1,h) 
+  logit(theta1) <-  logit_theta1
+  logit_theta1   ~  dnorm(mu, inv_tau2)  
+               
+  inv_tau2 <- pow(tau, -2)
+  
+  #Spike and Slab on logit_theta1
+  t ~ dbern(p0);
+  slab ~ dunif(l.slab,u.slab);
+  tau <- (1-t)*spike + t*slab;
+  mu  ~ dnorm(0,1.0E-6)
+  
+  # analysis of current data as joint model
+  y[2] ~ dbin(theta2, n)
+  #theta2 ~ dbeta(0.5, 0.5) #vague prior for sensitivity analysis
+  logit(theta2) <-  logit_theta2
+  logit_theta2 ~  dnorm(mu, inv_tau2) # commensurate prior
+  
+  y[3] ~ dbin(theta3, m)
+  theta3 <- theta2+ diff
+  diff ~ dnorm(0.0,1.0E-4)
+ 
+  #post prob
+  p <- step(diff) #greater than 0
+}
+
