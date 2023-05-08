@@ -74,9 +74,9 @@ for (k in 1:length(g)){
 }
 
 data <- data.frame(
-  y1 = y1, # cr for historical data
-  y2 = y2, # cr for control
-  y3 = y3, # cr for treatment
+  y1 = y1, # responses for historical data
+  y2 = y2, # responses for control
+  y3 = y3, # responses for treatment
   n = n, # number of trials control
   m = m, # number of trials treatment
   h = h # number of trials historical control
