@@ -121,7 +121,7 @@ params_to_monitor <- c("beta_0", "beta_1" , "hr_1", "p1", "p2", "p3")
 # Running the model
 model <- jags.model(file = "Bayesian_survival_model.txt", aml_data[[i]], 
                     n.chains = 3, n.adapt= 1000)
-update(model, 1000); # Burning 1000 samples to the MCMC gods...
+update(model, 1000); 
 mcmc_samples[[i]] <- coda.samples(model, params_to_monitor, n.iter= 50000,
                                   inits = list(.RNG.name = "base::Wichmann-Hill",
                                                .RNG.seed = 2022,
