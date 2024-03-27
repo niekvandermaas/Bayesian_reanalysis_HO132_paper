@@ -108,7 +108,7 @@ for(i in 1:length(interim_list)){
                         l.slab= 1.0E-4, #S_l (lower bound of slab) 
                         u.slab= 2, #S_u (upper bound of slab)
                         p0= 0.5, #p_0 (prior probability of being in the slab)
-                        spike=5000 #entry is Spike for logit_theta1
+                        spike=5000 #spike
   )
 }
 
